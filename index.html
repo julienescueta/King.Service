@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="King.service : Task scheduling for Azure and Windows">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>King.service</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/jefking/King.Service">View on GitHub</a>
+
+          <h1 id="project_title">King.service</h1>
+          <h2 id="project_tagline">Task scheduling for Azure and Windows</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/jefking/King.Service/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/jefking/King.Service/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>
+<a id="task-scheduling-for-azure-and-windows" class="anchor" href="#task-scheduling-for-azure-and-windows" aria-hidden="true"><span class="octicon octicon-link"></span></a>Task scheduling for Azure and Windows</h3>
+
+<ul>
+<li>Plugs into Azure Worker Roles &amp; Windows Servers</li>
+<li>Auto-Scale workloads within your server</li>
+<li>Tasks to initialize your environment
+
+<ul>
+<li>Create Azure Storage: Queues, Tables and Containers</li>
+<li>Load WCF services</li>
+</ul>
+</li>
+<li>Create Tasks that Occur:
+
+<ul>
+<li>Every X seconds per server instance</li>
+</ul>
+</li>
+<li>Every X seconds; and lessens frequency to Y when there is no work</li>
+<li>That determines the needed rate via frequency of processing tasks</li>
+<li>Once across all servers</li>
+<li>Runs at a specified time (resolution to the hour, or the minute) on one machine daily</li>
+<li>Dequeue messages or batches of messages for Azure Storage Queues</li>
+<li>And much more! <a href="https://github.com/jefking/King.Service/wiki">View Wiki</a>
+</li>
+<li><a href="https://github.com/jefking/King.Service/tree/master/Worker">Cloud Service</a></li>
+<li><a href="https://github.com/jefking/King.Service.ServiceBus">Service Bus</a></li>
+<li><a href="https://github.com/jefking/King.Service/tree/master/King.Service.WebJob">WebJob</a></li>
+</ul>
+
+<h3>
+<a id="nuget" class="anchor" href="#nuget" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://www.nuget.org/packages/King.Service">NuGet</a>
+</h3>
+
+<pre><code>PM&gt; Install-Package King.Service
+</code></pre>
+
+<h3>
+<a id="wiki" class="anchor" href="#wiki" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://github.com/jefking/King.Service/wiki">Wiki</a>
+</h3>
+
+<p>View the wiki to learn how to use this.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">King.service maintained by <a href="https://github.com/jefking">jefking</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
