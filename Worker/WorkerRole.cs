@@ -30,8 +30,10 @@ namespace Worker
                 ConnectionString = "UseDevelopmentStorage=true;",
                 TableName = "table",
                 QueueName = "queue",
+                DynamicQueueName = "batchsizing",
                 ScalableQueueName = "scalequeue",
                 ContainerName = "container",
+                FactoryQueueName = "super",
             };
 
             return this.manager.OnStart(config);

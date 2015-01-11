@@ -9,16 +9,18 @@
     /// <summary>
     /// Dequeue Batch Task for Queues
     /// </summary>
-    /// <remarks>
-    /// Generic, built for any dequeuing infrastructure
-    /// </remarks>
     public class DequeueBatch<T> : Dequeue<T>
     {
         #region Members
         /// <summary>
         /// Batch Count
         /// </summary>
-        protected readonly int batchCount = 5;
+        protected byte batchCount = 5;
+
+        /// <summary>
+        /// Minimum Batch Size
+        /// </summary>
+        public const byte MinimumBatchSize = 1;
         #endregion
 
         #region Constructors
@@ -30,10 +32,10 @@
         /// <param name="batchCount">Number of items to dequeue at a time</param>
         /// <param name="minimumPeriodInSeconds">Minimum, time in seconds</param>
         /// <param name="maximumPeriodInSeconds">Maximum, time in seconds</param>
-        public DequeueBatch(IPoller<T> poller, IProcessor<T> processor, int batchCount = 5, int minimumPeriodInSeconds = BaseTimes.MinimumStorageTiming, int maximumPeriodInSeconds = BaseTimes.MaximumStorageTiming)
+        public DequeueBatch(IPoller<T> poller, IProcessor<T> processor, byte batchCount = 5, int minimumPeriodInSeconds = BaseTimes.MinimumStorageTiming, int maximumPeriodInSeconds = BaseTimes.MaximumStorageTiming)
             : base(poller, processor, minimumPeriodInSeconds, maximumPeriodInSeconds)
         {
-            this.batchCount = batchCount <= 0 ? 5 : batchCount;
+            this.batchCount = batchCount == byte.MinValue ? MinimumBatchSize : batchCount;
         }
         #endregion
 
@@ -57,26 +59,26 @@
         /// <returns>Work was done</returns>
         public override async Task<bool> Run()
         {
-            var worked = false;
-
-            var messages = await this.poller.PollMany(this.batchCount);
+            var workDone = false;
+            var messages = await this.poller.PollMany(this.BatchCount);
             if (null != messages && messages.Any())
             {
-                Trace.TraceInformation("{0} messages dequeued.", messages.Count());
+                workDone = true;
 
-                worked = true;
+                Trace.TraceInformation("{0} messages dequeued for processing by: {1}.", messages.Count(), base.processor.GetType());
 
                 foreach (var msg in messages.Where(m => m != null))
                 {
-                    await base.Process(msg);
+                    await this.Process(msg);
                 }
             }
             else
             {
+
                 Trace.TraceInformation("No messages were dequeued.");
             }
 
-            return worked;
+            return workDone;
         }
         #endregion
     }

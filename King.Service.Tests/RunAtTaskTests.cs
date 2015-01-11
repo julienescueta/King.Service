@@ -84,7 +84,7 @@
         public void RunWrongHour()
         {
             var now = DateTime.UtcNow;
-            var hour = now.Hour > 1 ? now.Hour - 1 : 1;
+            var hour = now.Hour > 1 ? now.Hour - 1 : 2;
             var tt = new TestTask((byte)hour);
             tt.Run();
             Assert.IsFalse(tt.Called);
@@ -94,7 +94,7 @@
         public void RunWrongMinute()
         {
             var now = DateTime.UtcNow;
-            var minute = now.Minute > 1 ? now.Minute - 1 : 0;
+            var minute = now.Minute > 1 ? now.Minute - 1 : 2;
             var tt = new TestTask((byte)now.Hour, (sbyte)minute);
             tt.Run();
             Assert.IsFalse(tt.Called);

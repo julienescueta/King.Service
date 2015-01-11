@@ -41,9 +41,9 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="King.Azure, Version=1.0.1.22, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="King.Azure, Version=1.0.1.24, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\King.Azure.1.1.15\lib\net451\King.Azure.dll</HintPath>
+      <HintPath>..\packages\King.Azure.1.1.16\lib\net451\King.Azure.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.Edm, Version=5.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -72,8 +72,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NSubstitute.1.8.0.0\lib\net45\NSubstitute.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -95,13 +96,18 @@
     <Compile Include="AdaptiveHelper.cs" />
     <Compile Include="AdaptiveRunnerTests.cs" />
     <Compile Include="AutoScalerTests.cs" />
+    <Compile Include="Data\DequeueBatchDynamicTests.cs" />
     <Compile Include="Data\DequeueBatchTests.cs" />
     <Compile Include="Data\QueueAutoScalerTests.cs" />
+    <Compile Include="Data\StorageDequeueBatchDynamicTests.cs" />
     <Compile Include="Data\StorageDequeueBatchTests.cs" />
+    <Compile Include="Data\StorageDequeueFactoryTests.cs" />
+    <Compile Include="Data\StorageQueueAutoScalerTests.cs" />
     <Compile Include="RecurringHelper.cs" />
     <Compile Include="RecurringRunnerTests.cs" />
     <Compile Include="RunAtTaskTests.cs" />
     <Compile Include="Scalability\QueueScalerTests.cs" />
+    <Compile Include="Scalability\QueueThroughputTests.cs" />
     <Compile Include="Scalability\ScalerTests.cs" />
     <Compile Include="Timing\AdaptiveTimingTests.cs" />
     <Compile Include="Timing\BackoffTimingTests.cs" />
@@ -126,6 +132,7 @@
     <Compile Include="Timing\ExponentialTimingTests.cs" />
     <Compile Include="Timing\LinearTimingTests.cs" />
     <Compile Include="Timing\StrategiesTests.cs" />
+    <Compile Include="Timing\TimingTrackerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

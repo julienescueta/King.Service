@@ -1,8 +1,9 @@
 ﻿namespace King.Service.Scalability
 {
+    using King.Service.Data;
     using System;
-    using System.Collections.Concurrent;
 
+    #region IScaler
     /// <summary>
     /// Scaler Interface
     /// </summary>
@@ -57,4 +58,65 @@
         void ScaleDown(string taskName);
         #endregion
     }
+    #endregion
+
+    #region IQueueThroughput
+    /// <summary>
+    /// Queue Throughput Interface
+    /// </summary>
+    public interface IQueueThroughput
+    {
+        #region Methods
+        /// <summary>
+        /// Messages per Scale-unit
+        /// </summary>
+        /// <param name="priority">Priority</param>
+        /// <returns>Number of messages per scale unit</returns>
+        ushort MessagesPerScaleUnit(QueuePriority priority);
+
+        /// <summary>
+        /// Minimum Scale
+        /// </summary>
+        /// <param name="priority">Priority</param>
+        /// <returns>Minimum Scale</returns>
+        byte MinimumScale(QueuePriority priority);
+
+        /// <summary>
+        /// Maximum Scale
+        /// </summary>
+        /// <param name="priority">Priority</param>
+        /// <returns>Maximum Scale</returns>
+        byte MaximumScale(QueuePriority priority);
+
+        /// <summary>
+        /// Check Scale every (in minutes)
+        /// </summary>
+        /// <param name="priority">Priority</param>
+        /// <returns>Check Scale every (in minutes)</returns>
+        byte CheckScaleEvery(QueuePriority priority);
+
+        /// <summary>
+        /// Runner
+        /// </summary>
+        /// <param name="runs">Runs</param>
+        /// <param name="priority">Priority</param>
+        /// <returns>Scalable</returns>
+        IScalable Runner(IDynamicRuns runs, QueuePriority priority);
+
+        /// <summary>
+        /// Minimum Frequency
+        /// </summary>
+        /// <param name="priority">Priority</param>
+        /// <returns>Minimum Frequency</returns>
+        byte MinimumFrequency(QueuePriority priority);
+
+        /// <summary>
+        /// Maximum Frequency
+        /// </summary>
+        /// <param name="priority">Priority</param>
+        /// <returns>Maximum Frequency</returns>
+        byte MaximumFrequency(QueuePriority priority);
+        #endregion
+    }
+    #endregion
 }
